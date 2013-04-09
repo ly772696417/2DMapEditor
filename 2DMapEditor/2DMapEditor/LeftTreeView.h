@@ -6,6 +6,8 @@
 
 using namespace std;
 
+#define TREENODENUM 3
+
 class CLeftTreeView : public CTreeView
 {
 	DECLARE_DYNCREATE(CLeftTreeView)
@@ -17,7 +19,7 @@ private:
 	static CLeftTreeView *m_pSingleton;
 
 private:
-	HTREEITEM m_res;
+	HTREEITEM m_res[TREENODENUM];
 	CString m_path;
 	void ReadResource( CTreeCtrl* ctlTree, HTREEITEM parent, const string& path, const string& ext="bmp" );
 

@@ -106,8 +106,10 @@
     <ClInclude Include="2DMapEditorView.h" />
     <ClInclude Include="LeftTreeView.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MapEditorController.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RightMapView.h" />
+    <ClInclude Include="SingletonHolder.h" />
     <ClInclude Include="Splitter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -118,6 +120,7 @@
     <ClCompile Include="2DMapEditorView.cpp" />
     <ClCompile Include="LeftTreeView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MapEditorController.cpp" />
     <ClCompile Include="RightMapView.cpp" />
     <ClCompile Include="Splitter.cpp" />
     <ClCompile Include="stdafx.cpp">
