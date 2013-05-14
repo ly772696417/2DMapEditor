@@ -69,7 +69,7 @@ LPDIRECT3DTEXTURE9 Scenery::LoadTexture()
 		&info,                 //bitmap file info (from loaded file)
 		NULL,                  //color palette
 		&texture );            //destination texture
-//	m_pos.x-=info.Width/2;
-	
+	m_pos.x-=info.Width/2;
+	m_pos.y-=info.Height/2;
 	return texture;
 }
