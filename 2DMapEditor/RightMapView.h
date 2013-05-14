@@ -3,9 +3,17 @@
 
 // CRightMapView йсм╪
 
+#include "CMyGame.h"
+
 class CRightMapView : public CView
 {
 	DECLARE_DYNCREATE(CRightMapView)
+
+public:
+	
+
+	bool m_isMouseDown;
+	CPoint m_curMousePos,m_downMousePos;
 
 public:
 	static CRightMapView *Singleton() { return m_pSingleton;}
@@ -28,6 +36,16 @@ public:
 
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	virtual void OnInitialUpdate();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+public:
+	CRect m_micMapRect;
+	bool  m_isMouseLeave;
+	bool  scrollScreen();
 };
 
 

@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include <iostream>
 
+#include "MapEditorController.h"
+
 using namespace std;
 
 #define TREENODENUM 3

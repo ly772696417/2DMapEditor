@@ -19,17 +19,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -43,6 +43,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28February 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28February 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -104,34 +106,54 @@
     <ClInclude Include="2DMapEditor.h" />
     <ClInclude Include="2DMapEditorDoc.h" />
     <ClInclude Include="2DMapEditorView.h" />
+    <ClInclude Include="CMyDirectx.h" />
+    <ClInclude Include="CMyGame.h" />
     <ClInclude Include="LeftTreeView.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MapData.h" />
     <ClInclude Include="MapEditorController.h" />
+    <ClInclude Include="MotionScenery.h" />
+    <ClInclude Include="NullOperation.h" />
+    <ClInclude Include="Operation.h" />
+    <ClInclude Include="OperationStack.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RightMapView.h" />
+    <ClInclude Include="Scenery.h" />
     <ClInclude Include="SingletonHolder.h" />
     <ClInclude Include="Splitter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UndoChangeTerrain.h" />
+    <ClInclude Include="header.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2DMapEditor.cpp" />
     <ClCompile Include="2DMapEditorDoc.cpp" />
     <ClCompile Include="2DMapEditorView.cpp" />
+    <ClCompile Include="CMyDirectx.cpp" />
+    <ClCompile Include="CMyGame.cpp" />
     <ClCompile Include="LeftTreeView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MapData.cpp" />
     <ClCompile Include="MapEditorController.cpp" />
+    <ClCompile Include="MotionScenery.cpp" />
+    <ClCompile Include="NullOperation.cpp" />
+    <ClCompile Include="Operation.cpp" />
+    <ClCompile Include="OperationStack.cpp" />
     <ClCompile Include="RightMapView.cpp" />
+    <ClCompile Include="Scenery.cpp" />
     <ClCompile Include="Splitter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="UndoChangeTerrain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2DMapEditor.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="res\My2DMapEditor.rc2" />
   </ItemGroup>
   <ItemGroup>

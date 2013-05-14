@@ -33,6 +33,7 @@
 
 #include <afxcontrolbars.h>     // 功能区和控件条的 MFC 支持
 #include <afxcview.h>
+#include <afx.h>
 
 
 
@@ -52,4 +53,12 @@
 #endif
 #endif
 
+#include <iostream>
+using namespace std;
 
+extern const size_t BlockSize;
+extern const int  MicMapSize;
+extern double g_dscrollx;              
+extern double g_dscrolly;
+const string GetPath( const string& fileName );
+const string GetExt( const string& fileName );

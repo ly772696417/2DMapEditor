@@ -21,6 +21,8 @@ const UINT uiLastUserToolBarId = uiFirstUserToolBarId + iMaxUserToolbars - 1;
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
+	ON_COMMAND(ID_EDIT_UNDO, &CMainFrame::OnEditUndo)
+	ON_COMMAND(ID_EDIT_REDO, &CMainFrame::OnEditRedo)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -54,12 +56,12 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;      // 未能创建
 	}
 
-	if (!m_wndStatusBar.Create(this))
+/*	if (!m_wndStatusBar.Create(this))
 	{
 		TRACE0("未能创建状态栏\n");
 		return -1;      // 未能创建
 	}
-	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
+	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));*/
 
 	// TODO: 如果不需要可停靠工具栏，则删除这三行
 	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
@@ -77,9 +79,8 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	// TODO: 在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
 
-	cs.cx = ::GetSystemMetrics(SM_CXSCREEN);
-	cs.cy = ::GetSystemMetrics(SM_CYSCREEN);
 
+	cs.style |= WS_MAXIMIZE;
 	cs.style &= ~FWS_ADDTOTITLE;
 	cs.style &= ~WS_MAXIMIZEBOX;
 
@@ -139,4 +140,18 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 
 	return TRUE;
 	//return CFrameWnd::OnCreateClient(lpcs, pContext);
+}
+
+
+void CMainFrame::OnEditUndo()
+{
+	// TODO: 在此添加命令处理程序代码
+	MapEditorControllerSingleton::Instance().Undo();
+}
+
+
+void CMainFrame::OnEditRedo()
+{
+	// TODO: 在此添加命令处理程序代码
+	MapEditorControllerSingleton::Instance().Redo();
 }

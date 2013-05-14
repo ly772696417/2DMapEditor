@@ -121,7 +121,7 @@ BOOL CMy2DMapEditorApp::InitInstance()
 		return FALSE;
 
 	// 唯一的一个窗口已初始化，因此显示它并对其进行更新
-	m_pMainWnd->ShowWindow(SW_SHOW);
+	m_pMainWnd->ShowWindow(SW_SHOWMAXIMIZED);
 	m_pMainWnd->UpdateWindow();
 	return TRUE;
 }
@@ -178,3 +178,17 @@ void CMy2DMapEditorApp::OnAppAbout()
 
 
 
+
+
+BOOL CMy2DMapEditorApp::OnIdle(LONG lCount)
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	CRightMapView * rightView=CRightMapView::Singleton();
+	if (!rightView->m_isMouseLeave)
+	{
+		if (rightView->scrollScreen())	;
+
+	}
+	
+	return CWinAppEx::OnIdle(lCount);
+}

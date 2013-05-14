@@ -9,7 +9,8 @@
 
 #include "resource.h"       // 主符号
 
-
+#include "RightMapView.h"
+#include "MapEditorController.h"
 // CMy2DMapEditorApp:
 // 有关此类的实现，请参阅 2DMapEditor.cpp
 //
@@ -28,6 +29,7 @@ public:
 // 实现
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
+	virtual BOOL OnIdle(LONG lCount);
 };
 
 extern CMy2DMapEditorApp theApp;

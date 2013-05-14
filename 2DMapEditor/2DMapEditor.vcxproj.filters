@@ -19,6 +19,12 @@
     <Filter Include="Operation">
       <UniqueIdentifier>{448ee798-0d49-42c6-9943-750f2c56cdce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MapData">
+      <UniqueIdentifier>{7eaa5209-420f-4d75-b1b6-93fce7d138a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Draw">
+      <UniqueIdentifier>{e70dac2d-9a4a-48fd-9e59-c7c6eac01a3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -60,6 +66,36 @@
     <ClInclude Include="MapEditorController.h">
       <Filter>MapEditor</Filter>
     </ClInclude>
+    <ClInclude Include="MapData.h">
+      <Filter>MapData</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="NullOperation.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoChangeTerrain.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="OperationStack.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="CMyDirectx.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="CMyGame.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="header.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionScenery.h">
+      <Filter>MapData</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenery.h">
+      <Filter>MapData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2DMapEditor.cpp">
@@ -89,6 +125,33 @@
     <ClCompile Include="MapEditorController.cpp">
       <Filter>MapEditor</Filter>
     </ClCompile>
+    <ClCompile Include="MapData.cpp">
+      <Filter>MapData</Filter>
+    </ClCompile>
+    <ClCompile Include="Operation.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="NullOperation.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="UndoChangeTerrain.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="OperationStack.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="CMyDirectx.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="CMyGame.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="MotionScenery.cpp">
+      <Filter>MapData</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenery.cpp">
+      <Filter>MapData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2DMapEditor.rc">
@@ -99,6 +162,7 @@
     <None Include="res\My2DMapEditor.rc2">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\2DMapEditorDoc.ico">

@@ -72,6 +72,7 @@ void CLeftTreeView::OnTvnSelchanged(NMHDR *pNMHDR, LRESULT *pResult)
 		if (pTreeCtrl->GetItemText(parent) == "地形")
 		{
 			m_ImagePath = m_path + p[0] + pTreeCtrl->GetItemText(item);
+			MapEditorControllerSingleton::Instance().ChangeTerrain(m_ImagePath.GetString());
 			CRightMapView::Singleton()->Invalidate(TRUE);
 		}
 
@@ -80,9 +81,16 @@ void CLeftTreeView::OnTvnSelchanged(NMHDR *pNMHDR, LRESULT *pResult)
 
 			// turn to full path nam
 			m_ImagePath = m_path + p[1] + pTreeCtrl->GetItemText(item);
-			CRightMapView::Singleton()->Invalidate(TRUE);
+			MapEditorControllerSingleton::Instance().SetModeBrush(m_ImagePath);
 
 		} 
+
+		if (pTreeCtrl->GetItemText(parent) == "生物")
+		{
+			// turn to full path nam
+			m_ImagePath = m_path + p[2] + pTreeCtrl->GetItemText(item);
+			MapEditorControllerSingleton::Instance().SetModeBrush(m_ImagePath);
+		}
 	}
 
 	*pResult = 0;
