@@ -12,6 +12,7 @@
 #pragma comment(lib, "d3dx9.lib")
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib,"dinput8.lib")
+
 #pragma comment(lib,"xinput.lib")
 
 
