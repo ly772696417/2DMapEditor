@@ -6,6 +6,8 @@
 #include "UndoChangeTerrain.h"
 #include "Scenery.h"
 
+//woshisaoma
+
 using namespace std;
 
 // MapData ÃüÁîÄ¿±ê
