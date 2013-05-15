@@ -4,6 +4,7 @@
 #include "MotionScenery.h"
 #include "MapEditorController.h"
 #include "list"
+
 using namespace std;
 double g_dscrollx=0;              //±³¾°»º´æX×ø±ê
 double g_dscrolly=0;             //±³¾°»º´æY×ø±ê
@@ -88,6 +89,7 @@ void CMyGame::Game_Run(bool isMouseDown,CPoint curMouse,CPoint downMouse)
 		drawMode(1);
 		drawMicMode();
 		drawMicMap();
+		drawTemMode();
 		int x=m_curMousePos.x;
 		int y=m_curMousePos.y;
 		myDirectx.FontPrint(m_lpfont,0,10,ToString(x));
@@ -285,4 +287,32 @@ void CMyGame::moveCameraTo(CPoint point)
 	g_dscrollx=m_mapOffest.x%m_winRect.Width();
 	g_dscrolly=m_mapOffest.y%m_winRect.Height();
 
+}
+
+void CMyGame::drawTemMode()
+{
+	MapEditorController::EditorMode mode = MapEditorControllerSingleton::Instance().GetEditorMode();
+	string modepath=MapEditorControllerSingleton::Instance().GetModePath();
+	if ( mode==MapEditorController::ModeBrush )
+	{
+		char buffer[260];
+		string ext = GetExt( modepath );
+		if ( ext==".mo" ) {
+			string path = GetPath( modepath );
+			FILE* fp = fopen( modepath.c_str(), "r" );
+			if ( fp!=NULL ) {
+				fgets( buffer, 260, fp );
+				int len = strlen( buffer );
+				if ( !isalpha(buffer[len-1]) ) buffer[len-1]='\0';
+				modepath = CString("") + path.c_str() + buffer;
+
+			}
+			fclose( fp );
+		}
+		D3DXIMAGE_INFO info;
+		HRESULT result = D3DXGetImageInfoFromFile(modepath.c_str(), &info);
+		m_PlayerImage=myDirectx.LoadTexture(modepath,D3DCOLOR_XRGB(255,255,255));
+		myDirectx.Sprite_Transform_Draw(m_PlayerImage,m_curMousePos.x-info.Width/2,m_curMousePos.y-info.Height/2,
+			info.Width,info.Height,0,1,0,1,1,D3DCOLOR_ARGB(200,255,255,255));
+	}
 }

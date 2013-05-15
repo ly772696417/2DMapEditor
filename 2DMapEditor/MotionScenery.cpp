@@ -41,7 +41,7 @@ void MotionScenery::frame_update()
 	DWORD t = GetTickCount();
 
 	// If time is up update time.
-	if ( t>m_lastTime+40 ) 
+	if ( t>m_lastTime+30 ) 
 	{
 		m_lastTime = t;
 		m_frames ++; 

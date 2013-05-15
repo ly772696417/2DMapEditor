@@ -57,8 +57,9 @@ void MapEditorController::drawModel(CPoint cp)
 	if (ext==".mo")
 	{
 		scenery=new MotionScenery(m_editfilePath,cp+m_pMapData->GetOffest(),Getdevice());
-	}else
+	}else{
 		scenery=new Scenery(m_editfilePath.c_str(),cp+m_pMapData->GetOffest(),Getdevice());
+	}
 	m_pMapData->m_sceneryList.push_back(scenery);
 };
 

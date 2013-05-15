@@ -46,6 +46,7 @@ public:
 	CRect m_micMapRect;
 	bool  m_isMouseLeave;
 	bool  scrollScreen();
+	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
 };
 
 

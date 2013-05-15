@@ -30,6 +30,7 @@ public:
 	void drawMicMap();
 	void drawMode(float scale);
 	void drawMicMode();
+	void drawTemMode();
 	void moveMicMap();
 	void moveCameraTo(CPoint point);
 	//”Œœ∑Ω· ¯

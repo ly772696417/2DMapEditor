@@ -29,7 +29,8 @@ public:
 
 	MapData * GetMapData(){return m_pMapData;};
 
-	const string& GetFilePath()const{ return m_editfilePath; };
+	const string& GetFilePath()const { return m_terrainFilePath; };
+	const string& GetModePath()const { return m_editfilePath; };
 
 	//EditorMode
 	typedef enum EditorMode{ ModeSelection,ModeBrush,ModeMove };

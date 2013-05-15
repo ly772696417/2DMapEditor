@@ -33,6 +33,7 @@ ON_WM_LBUTTONUP()
 ON_WM_MOUSEMOVE()
 //ON_WM_MOUSELEAVE()
 //ON_WM_MOUSEHOVER()
+ON_WM_RBUTTONDOWN()
 END_MESSAGE_MAP()
 
 
@@ -208,3 +209,16 @@ bool CRightMapView::scrollScreen()
 }
 
 
+
+
+void CRightMapView::OnRButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	MapEditorController::EditorMode mode = MapEditorControllerSingleton::Instance().GetEditorMode();
+	if (mode==MapEditorController::ModeBrush)
+	{
+		MapEditorControllerSingleton::Instance().SetModeSelection();
+	}
+
+	CView::OnRButtonDown(nFlags, point);
+}
