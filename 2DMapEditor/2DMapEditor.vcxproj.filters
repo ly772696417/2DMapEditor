@@ -96,6 +96,9 @@
     <ClInclude Include="Scenery.h">
       <Filter>MapData</Filter>
     </ClInclude>
+    <ClInclude Include="RedoInsertScenery.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2DMapEditor.cpp">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="Scenery.cpp">
       <Filter>MapData</Filter>
+    </ClCompile>
+    <ClCompile Include="RedoInsertScenery.cpp">
+      <Filter>Operation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

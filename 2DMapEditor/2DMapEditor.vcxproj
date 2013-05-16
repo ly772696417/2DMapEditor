@@ -116,6 +116,7 @@
     <ClInclude Include="NullOperation.h" />
     <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationStack.h" />
+    <ClInclude Include="RedoInsertScenery.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RightMapView.h" />
     <ClInclude Include="Scenery.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="NullOperation.cpp" />
     <ClCompile Include="Operation.cpp" />
     <ClCompile Include="OperationStack.cpp" />
+    <ClCompile Include="RedoInsertScenery.cpp" />
     <ClCompile Include="RightMapView.cpp" />
     <ClCompile Include="Scenery.cpp" />
     <ClCompile Include="Splitter.cpp" />
