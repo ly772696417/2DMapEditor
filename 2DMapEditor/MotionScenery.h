@@ -17,8 +17,9 @@ public:
 	virtual const int GetHeight() { return m_ImageHeight; }
 	virtual const CPoint& GetPos() const { return m_pos; }
 
-	virtual bool IsSeleted() const { return m_isSelect; };
-	virtual void Selete( bool state ) { m_isSelect = state; };
+	virtual bool IsSeleted() const { return m_scenerys[0].IsSeleted(); };
+	virtual void Selete( bool state );
+	virtual const CRect GetRect(MapData & mapData);
 	virtual void positon_update( const CPoint& moveV ) { m_pos += moveV; m_bpos += moveV; };
 	virtual void frame_update();
 public:

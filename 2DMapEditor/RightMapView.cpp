@@ -73,7 +73,7 @@ void CRightMapView::OnInitialUpdate()
 	// TODO: 在此添加专用代码和/或调用基类
 	
 	m_isMouseDown = false;
-
+	m_isSelcted = false;
 	CRect rect;
 	GetClientRect(rect);
 	m_curMousePos = CPoint(rect.Width() * 0.5,rect.Height() * 0.5);
@@ -132,7 +132,18 @@ void CRightMapView::OnLButtonDown(UINT nFlags, CPoint point)
 		}else
 		MapEditorControllerSingleton::Instance().drawModel(point);
 	}
-
+	if (mode == MapEditorController::ModeSelection)
+	{
+		m_selRect.SetRect(point,point);
+		m_isSelcted=true;	
+		if (MapEditorControllerSingleton::Instance().CheackIsMove(point))
+		{
+			MapEditorControllerSingleton::Instance().SetModeMove();
+			m_isSelcted=false;
+		}
+	}else{
+		m_isSelcted=false;
+	}
 	CView::OnLButtonDown(nFlags, point);
 }
 
@@ -141,6 +152,15 @@ void CRightMapView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	m_isMouseDown = false;
+	MapEditorControllerSingleton::Instance().m_myGame->setSelRect(false,m_selRect);
+	if (m_isSelcted)
+	{
+		m_selRect.SetRect(m_selRect.TopLeft(),point);
+		MapEditorControllerSingleton::Instance().CheackIsSel(m_selRect);
+		m_isSelcted=false;
+	}else{
+		
+	}
 	CView::OnLButtonUp(nFlags, point);
 }
 
@@ -159,7 +179,19 @@ void CRightMapView::OnMouseMove(UINT nFlags, CPoint point)
 			MapEditorControllerSingleton::Instance().m_myGame->moveCameraTo(point-m_micMapRect.TopLeft());
 		}
 	}
-	
+	if (m_isMouseDown && m_isSelcted)
+	{
+		m_selRect.SetRect(m_selRect.TopLeft(),point);
+		MapEditorControllerSingleton::Instance().m_myGame->setSelRect(true,m_selRect);
+	}else{
+		MapEditorControllerSingleton::Instance().m_myGame->setSelRect(false,m_selRect);
+	}
+
+	MapEditorController::EditorMode mode=MapEditorControllerSingleton::Instance().GetEditorMode();
+	if (mode=MapEditorController::ModeMove)
+	{
+
+	}
 	CView::OnMouseMove(nFlags, point);
 }
 

@@ -11,8 +11,9 @@ class CRightMapView : public CView
 
 public:
 	
-
+	CRect m_selRect;
 	bool m_isMouseDown;
+	bool  m_isSelcted;
 	CPoint m_curMousePos,m_downMousePos;
 
 public:

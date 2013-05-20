@@ -41,7 +41,8 @@ public:
 
 	//Operations
 	void InsertScenery(const CPoint& point);
-
+	void CheackIsSel(CRect rect);
+	bool CheackIsMove(CPoint pt);
 	LPDIRECT3DDEVICE9 Getdevice();
 
 public:

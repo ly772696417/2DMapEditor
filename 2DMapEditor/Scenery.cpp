@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Scenery.h"
-
+#include "MapData.h"
 
 Scenery::Scenery():m_lpImage(NULL),m_fileName("")
 {
@@ -71,4 +71,12 @@ LPDIRECT3DTEXTURE9 Scenery::LoadTexture()
 		&texture );            //destination texture
 
 	return texture;
+}
+
+const CRect Scenery::GetRect( MapData & mapData)
+{
+	CRect rect;
+	CPoint cp=m_pos-mapData.GetOffest();
+	rect.SetRect(cp.x,cp.y,cp.x+m_ImageWidth,cp.y+m_ImageHeight);
+	return rect;
 }

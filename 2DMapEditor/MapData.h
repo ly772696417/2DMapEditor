@@ -26,11 +26,12 @@ public:
 	size_t getWidth() { return m_xlength; };
 	size_t getHeight() { return m_yLength; };
 	void   SetOffest(CPoint offest,const CRect & rect );
-
+	
+	
 public:
 	Operation *ChangeTerrain(const string& terrainFilePath);
 	Operation *InsertScenery(const string& filePath,const CPoint& point);
-
+	Operation *MoveMode();
 public:
 	list<Scenery *> m_sceneryList;
 };

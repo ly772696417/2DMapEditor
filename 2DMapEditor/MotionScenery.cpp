@@ -49,4 +49,17 @@ void MotionScenery::frame_update()
 	}
 }
 
+void MotionScenery::Selete( bool state )
+{
+	for (size_t i=0;i<m_scenerys.size();i++)
+	{
+		m_scenerys[i].Selete(state);
+	}
+}
+
+const CRect MotionScenery::GetRect(MapData & mapData)
+{
+	return m_scenerys[0].GetRect(mapData);
+}
+
 

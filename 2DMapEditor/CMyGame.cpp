@@ -45,7 +45,7 @@ void CMyGame::Data_Init()
 	m_isTerrainChanged=true;
 	m_isMouseLeave=false;
 	m_lpfont = myDirectx.MakeFont("Arial Bold", 24);
-	
+	m_bisSel=false;
 }
 
 void CMyGame::Game_End()
@@ -79,8 +79,7 @@ void CMyGame::Game_Run(bool isMouseDown,CPoint curMouse,CPoint downMouse)
 	myDirectx.d3ddev->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 
 		D3DCOLOR_XRGB(255,255,255), 1.0f, 0);	
 	myDirectx.DirectInput_Update();
-//	if(m_isMouseLeave==false)
-//		scrollScreen();
+
 	setTerrainFile();
 	drawMap();	
 	if(myDirectx.d3ddev->BeginScene())	
@@ -90,6 +89,8 @@ void CMyGame::Game_Run(bool isMouseDown,CPoint curMouse,CPoint downMouse)
 		drawMicMode();
 		drawMicMap();
 		drawTemMode();
+		if (m_bisSel)
+			drawRect();
 		int x=m_curMousePos.x;
 		int y=m_curMousePos.y;
 		myDirectx.FontPrint(m_lpfont,0,10,ToString(x));
@@ -149,7 +150,7 @@ void CMyGame::setTerrainFile()
 	}
 }
 
-void CMyGame::scrollScreen()
+/*void CMyGame::scrollScreen()
 {
 	MapData * mapData=MapEditorControllerSingleton::Instance().GetMapData();
 	CPoint mapOffest=mapData->GetOffest();
@@ -190,7 +191,7 @@ void CMyGame::scrollScreen()
 	
 	mapData->SetOffest(mapOffest,m_winRect);
 	
-}
+}*/
 
 void CMyGame::drawMap()
 {
@@ -225,10 +226,12 @@ void CMyGame::drawMode(float scale)
 	MapData * mapData=MapEditorControllerSingleton::Instance().GetMapData();
 	for (list<Scenery *>::iterator it=mapData->m_sceneryList.begin(); it!=mapData->m_sceneryList.end() ; it++)
 	{
+		CRect rect=(*it)->GetRect(*mapData);
 		if ( typeid(**it)==typeid(Scenery) )
 		{
 			myDirectx.Sprite_Transform_Draw((*it)->GetImage(),(*it)->GetPos().x-m_mapOffest.x,
-				(*it)->GetPos().y-m_mapOffest.y,(*it)->GetWidth(),(*it)->GetHeight(),0,1,0.0,scale,scale);
+				(*it)->GetPos().y-m_mapOffest.y,(*it)->GetWidth(),(*it)->GetHeight(),0,1,0.0,scale,scale);		
+			
 		}else
 		{
 			MotionScenery * ms=dynamic_cast<MotionScenery *>( (*it) );
@@ -236,6 +239,12 @@ void CMyGame::drawMode(float scale)
 			myDirectx.Sprite_Transform_Draw(ms->m_scenerys[ms->m_frames].GetImage(),
 				ms->m_scenerys[ms->m_frames].GetPos().x-m_mapOffest.x,ms->m_scenerys[ms->m_frames].GetPos().y-m_mapOffest.y,
 				ms->m_scenerys[ms->m_frames].GetWidth(),ms->m_scenerys[ms->m_frames].GetHeight(),0,1,0.0,scale,scale);
+
+		}
+		if ((*it)->IsSeleted())
+		{				
+			myDirectx.Sprite_Transform_Draw(m_RectImage,rect.left,rect.top,32,32,
+				0,1,0.0,(float)rect.Width()/32.0,(float)rect.Height()/32.0);
 		}
 	}
 }
@@ -259,6 +268,24 @@ void CMyGame::drawMicMode()
 				ms->m_scenerys[ms->m_frames].GetPos().x*scaleW,ms->m_scenerys[ms->m_frames].GetPos().y*scaleH+(m_winRect.Height()-MicMapSize),
 				ms->m_scenerys[ms->m_frames].GetWidth(),ms->m_scenerys[ms->m_frames].GetHeight(),0,1,0.0,scaleW,scaleH);
 		}
+	}
+}
+
+void CMyGame::setSelRect(bool state,CRect rect)
+{
+	m_bisSel=state;
+	m_selRect=rect;
+}
+
+void CMyGame::drawRect()
+{
+	if (m_selRect.left>m_winRect.left && m_selRect.right<MicMapSize 
+		&& m_selRect.top>(m_winRect.bottom-MicMapSize) && m_selRect.bottom<m_winRect.bottom)
+	{
+	}else
+	{
+		myDirectx.Sprite_Transform_Draw(m_RectImage,m_selRect.left,m_selRect.top,32.0,32.0,
+		0,1,0.0,(float)m_selRect.Width()/32.0,(float)m_selRect.Height()/32.0);	
 	}
 }
 
