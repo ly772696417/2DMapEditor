@@ -48,3 +48,12 @@ const string GetExt( const string& fileName )
 	return fileName.substr( t, fileName.length()-t );
 }
 
+
+bool RectIntersect( const CRect& a, const CRect& b )
+{
+	CRect o;
+	if ( b.PtInRect(a.TopLeft()) ) return true;
+	if ( a.PtInRect(b.TopLeft()) ) return true;
+	if ( o.IntersectRect( &a, &b ) ) return true;
+	else return false;
+}

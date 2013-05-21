@@ -3,6 +3,7 @@
 #include <string>
 #include <list>
 #include "Operation.h"
+#include "NullOperation.h"
 #include "UndoChangeTerrain.h"
 #include "Scenery.h"
 
@@ -26,11 +27,12 @@ public:
 	size_t getWidth() { return m_xlength; };
 	size_t getHeight() { return m_yLength; };
 	void   SetOffest(CPoint offest,const CRect & rect );
-
+	
+	
 public:
 	Operation *ChangeTerrain(const string& terrainFilePath);
 	Operation *InsertScenery(const string& filePath,const CPoint& point);
-
+	Operation *MoveMode(CPoint moveVec,bool isLastMove);
 public:
 	list<Scenery *> m_sceneryList;
 };
