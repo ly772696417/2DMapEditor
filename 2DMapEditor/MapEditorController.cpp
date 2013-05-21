@@ -95,3 +95,8 @@ bool MapEditorController::CheackIsMove(CPoint pt)
 	}
 	return false;
 }
+
+void MapEditorController::MoveMode(CPoint moveVec)
+{
+	m_pMapData->MoveMode(moveVec,true);
+}

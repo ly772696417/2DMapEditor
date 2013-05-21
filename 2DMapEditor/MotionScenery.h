@@ -20,7 +20,7 @@ public:
 	virtual bool IsSeleted() const { return m_scenerys[0].IsSeleted(); };
 	virtual void Selete( bool state );
 	virtual const CRect GetRect(MapData & mapData);
-	virtual void positon_update( const CPoint& moveV ) { m_pos += moveV; m_bpos += moveV; };
+	virtual void positon_update( const CPoint& moveV );
 	virtual void frame_update();
 public:
 	int				m_frames;

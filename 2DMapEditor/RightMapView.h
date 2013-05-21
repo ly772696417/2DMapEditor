@@ -15,6 +15,7 @@ public:
 	bool m_isMouseDown;
 	bool  m_isSelcted;
 	CPoint m_curMousePos,m_downMousePos;
+	CPoint  m_ogrMovePos,m_moveVec;
 
 public:
 	static CRightMapView *Singleton() { return m_pSingleton;}

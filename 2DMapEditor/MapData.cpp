@@ -48,3 +48,17 @@ void MapData::SetOffest(CPoint offest,const CRect & rect)
 	if(m_offest.y>m_yLength*BlockSize-rect.Height()) m_offest.y=m_yLength*BlockSize-rect.Height();
 	if(m_offest.x>m_xlength*BlockSize-rect.Width()) m_offest.x=m_xlength*BlockSize-rect.Width();
 }
+
+Operation * MapData::MoveMode(CPoint moveVec,bool isLastMove)
+{
+	Operation * oper=new NullOperation();
+	list<Scenery*>::iterator it;
+	for (it=m_sceneryList.begin();it!=m_sceneryList.end();it++)
+	{
+		if ( (*it)->IsSeleted() )
+		{
+			(*it)->positon_update(moveVec);
+		}
+	}
+	return oper;
+}

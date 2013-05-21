@@ -137,12 +137,17 @@ void CRightMapView::OnLButtonDown(UINT nFlags, CPoint point)
 		m_selRect.SetRect(point,point);
 		m_isSelcted=true;	
 		if (MapEditorControllerSingleton::Instance().CheackIsMove(point))
-		{
+		{		
 			MapEditorControllerSingleton::Instance().SetModeMove();
 			m_isSelcted=false;
 		}
 	}else{
 		m_isSelcted=false;
+	}
+	mode=MapEditorControllerSingleton::Instance().GetEditorMode();
+	if (mode == MapEditorController::ModeMove)
+	{
+		m_ogrMovePos=point;
 	}
 	CView::OnLButtonDown(nFlags, point);
 }
@@ -159,8 +164,13 @@ void CRightMapView::OnLButtonUp(UINT nFlags, CPoint point)
 		MapEditorControllerSingleton::Instance().CheackIsSel(m_selRect);
 		m_isSelcted=false;
 	}else{
-		
+		MapEditorController::EditorMode mode=MapEditorControllerSingleton::Instance().GetEditorMode();
+		if (mode == MapEditorController::ModeMove)
+		{
+			MapEditorControllerSingleton::Instance().SetModeSelection();
+		}
 	}
+	
 	CView::OnLButtonUp(nFlags, point);
 }
 
@@ -188,9 +198,12 @@ void CRightMapView::OnMouseMove(UINT nFlags, CPoint point)
 	}
 
 	MapEditorController::EditorMode mode=MapEditorControllerSingleton::Instance().GetEditorMode();
-	if (mode=MapEditorController::ModeMove)
+	if (mode==MapEditorController::ModeMove)
 	{
-
+		m_moveVec=point-m_ogrMovePos;
+		MapEditorControllerSingleton::Instance().MoveMode(m_moveVec);
+		m_ogrMovePos=point;
+		
 	}
 	CView::OnMouseMove(nFlags, point);
 }

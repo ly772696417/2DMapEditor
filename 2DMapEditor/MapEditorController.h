@@ -43,6 +43,7 @@ public:
 	void InsertScenery(const CPoint& point);
 	void CheackIsSel(CRect rect);
 	bool CheackIsMove(CPoint pt);
+	void MoveMode(CPoint moveVec);
 	LPDIRECT3DDEVICE9 Getdevice();
 
 public:

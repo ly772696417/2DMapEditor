@@ -35,7 +35,13 @@ m_mofilename(moFile),m_lastTime(0),	m_frames(0),m_totalframe(0)
 	fclose( fp );
 }
 
-
+void MotionScenery::positon_update( const CPoint& moveV )
+{
+	for (size_t i=0;i<m_scenerys.size();i++)
+	{
+		m_scenerys[i].positon_update(moveV);
+	}
+}
 void MotionScenery::frame_update()
 {
 	DWORD t = GetTickCount();
