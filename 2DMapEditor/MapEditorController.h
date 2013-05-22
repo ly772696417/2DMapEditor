@@ -44,7 +44,7 @@ public:
 	void DeleteSelection();
 	void CheackIsSel(CRect rect);
 	bool CheackIsMove(CPoint pt);
-	void MoveMode(CPoint moveVec);
+	void MoveMode(CPoint moveVec,bool lastMove = false);
 
 	LPDIRECT3DDEVICE9 Getdevice();
 

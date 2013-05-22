@@ -97,10 +97,14 @@ bool MapEditorController::CheackIsMove(CPoint pt)
 	return false;
 }
 
-void MapEditorController::MoveMode(CPoint moveVec)
+void MapEditorController::MoveMode(CPoint moveVec,bool lastMove)
 {
-	Operation *pOperation = m_pMapData->MoveMode(moveVec,true);
-	m_operationStack.Ondo(pOperation);
+	Operation *pOperation = m_pMapData->MoveMode(moveVec,lastMove);
+	if (lastMove)
+	{
+		m_operationStack.Ondo(pOperation);
+	}
+	
 }
 
 void MapEditorController::DeleteSelection(){

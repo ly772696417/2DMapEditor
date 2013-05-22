@@ -3,7 +3,7 @@
 #include "Scenery.h"
 #include "MapData.h"
 
-UndoMove::UndoMove(const CPoint& moveV):m_moveV(moveV)
+UndoMove::UndoMove(const CPoint& moveV):m_moveV(-moveV)
 {
 }
 

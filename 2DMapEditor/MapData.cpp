@@ -126,6 +126,7 @@ Operation * MapData::MoveMode(CPoint moveVec,bool isLastMove)
 			
 		}
 	}
+
 	return oper;
 }
 

@@ -170,6 +170,8 @@ void CRightMapView::OnLButtonUp(UINT nFlags, CPoint point)
 		MapEditorController::EditorMode mode=MapEditorControllerSingleton::Instance().GetEditorMode();
 		if (mode == MapEditorController::ModeMove)
 		{
+			m_moveVec = point - m_ogrMovePos;
+			MapEditorControllerSingleton::Instance().MoveMode(m_moveVec,true);
 			MapEditorControllerSingleton::Instance().SetModeSelection();
 		}
 	}
