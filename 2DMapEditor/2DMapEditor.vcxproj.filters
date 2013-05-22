@@ -96,6 +96,21 @@
     <ClInclude Include="Scenery.h">
       <Filter>MapData</Filter>
     </ClInclude>
+    <ClInclude Include="RedoDeleteSelection.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="RedoInsertScenery.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoDeleteSeletion.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoInsertScenery.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoMove.h">
+      <Filter>Operation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2DMapEditor.cpp">
@@ -151,6 +166,21 @@
     </ClCompile>
     <ClCompile Include="Scenery.cpp">
       <Filter>MapData</Filter>
+    </ClCompile>
+    <ClCompile Include="RedoDeleteSelection.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="RedoInsertScenery.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="UndoDeleteSeletion.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="UndoInsertScenery.cpp">
+      <Filter>Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="UndoMove.cpp">
+      <Filter>Operation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

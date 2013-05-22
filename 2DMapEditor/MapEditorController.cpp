@@ -47,7 +47,8 @@ void MapEditorController::NewMap(const CPoint& mapSize)
 //Operations
 void MapEditorController::InsertScenery(const CPoint& point)
 {
-	//Operation *pOperation = m_pMapData-
+	Operation *pOperation = m_pMapData->InsertScenery(m_editfilePath,m_pMapData->ScreenPoint2MapPoint(point),Getdevice());
+	m_operationStack.Ondo(pOperation);
 }
 
 void MapEditorController::drawModel(CPoint cp)
@@ -98,5 +99,11 @@ bool MapEditorController::CheackIsMove(CPoint pt)
 
 void MapEditorController::MoveMode(CPoint moveVec)
 {
-	m_pMapData->MoveMode(moveVec,true);
+	Operation *pOperation = m_pMapData->MoveMode(moveVec,true);
+	m_operationStack.Ondo(pOperation);
+}
+
+void MapEditorController::DeleteSelection(){
+	Operation *pOper = m_pMapData->DeleteSelection();
+	m_operationStack.Ondo(pOper);
 }

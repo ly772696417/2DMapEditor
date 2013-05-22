@@ -20,8 +20,6 @@ public:
 public:
 	void NewMap(const CPoint& mapSize);
 
-	void ChangeTerrain(const string& terrainFilePath);
-
 	void Undo();
 	void Redo();
 
@@ -41,9 +39,13 @@ public:
 
 	//Operations
 	void InsertScenery(const CPoint& point);
+	void ChangeTerrain(const string& terrainFilePath);
+
+	void DeleteSelection();
 	void CheackIsSel(CRect rect);
 	bool CheackIsMove(CPoint pt);
 	void MoveMode(CPoint moveVec);
+
 	LPDIRECT3DDEVICE9 Getdevice();
 
 public:

@@ -2,7 +2,7 @@
 #include "Scenery.h"
 #include "MapData.h"
 
-Scenery::Scenery():m_lpImage(NULL),m_fileName("")
+Scenery::Scenery():m_lpImage(NULL),m_fileName(""),m_guid(CalcualteGUID())
 {
 	
 }
@@ -11,15 +11,15 @@ Scenery::Scenery( const Scenery& o ):
 	m_pos( o.m_pos ),
 	m_bpos( o.m_bpos ),
 	m_fileName( o.m_fileName ),
-	m_guid( o.m_guid ),
 	m_isSelect( o.m_isSelect ),
-	m_lpd3ddev(o.m_lpd3ddev)
+	m_lpd3ddev(o.m_lpd3ddev),
+	m_guid(o.m_guid)
 {	
 	m_lpImage=LoadTexture();
 }
 
 Scenery::Scenery( const char* bmpName, const CPoint& pt ,LPDIRECT3DDEVICE9 d3ddev):
-m_pos(pt),m_isSelect(false),m_fileName(bmpName),m_lpd3ddev(d3ddev)
+m_pos(pt),m_isSelect(false),m_fileName(bmpName),m_lpd3ddev(d3ddev),m_guid(CalcualteGUID())
 {
 	m_lpImage=LoadTexture();
 	m_pos.x-=m_ImageWidth/2;

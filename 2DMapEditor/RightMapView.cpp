@@ -128,9 +128,12 @@ void CRightMapView::OnLButtonDown(UINT nFlags, CPoint point)
 	{
 		if (point.x>0 && point.x<MicMapSize && point.y>(rect.Height()-MicMapSize) && point.y<rect.bottom)
 		{
-			;
-		}else
-		MapEditorControllerSingleton::Instance().drawModel(point);
+			
+		}
+		else{
+			MapEditorControllerSingleton::Instance().InsertScenery(point);
+			//MapEditorControllerSingleton::Instance().drawModel(point);
+		}
 	}
 	if (mode == MapEditorController::ModeSelection)
 	{

@@ -21,6 +21,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -28,6 +29,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -114,6 +116,8 @@
     <ClInclude Include="NullOperation.h" />
     <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationStack.h" />
+    <ClInclude Include="RedoDeleteSelection.h" />
+    <ClInclude Include="RedoInsertScenery.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RightMapView.h" />
     <ClInclude Include="Scenery.h" />
@@ -123,6 +127,9 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UndoChangeTerrain.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="UndoDeleteSeletion.h" />
+    <ClInclude Include="UndoInsertScenery.h" />
+    <ClInclude Include="UndoMove.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2DMapEditor.cpp" />
@@ -138,6 +145,8 @@
     <ClCompile Include="NullOperation.cpp" />
     <ClCompile Include="Operation.cpp" />
     <ClCompile Include="OperationStack.cpp" />
+    <ClCompile Include="RedoDeleteSelection.cpp" />
+    <ClCompile Include="RedoInsertScenery.cpp" />
     <ClCompile Include="RightMapView.cpp" />
     <ClCompile Include="Scenery.cpp" />
     <ClCompile Include="Splitter.cpp" />
@@ -146,6 +155,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="UndoChangeTerrain.cpp" />
+    <ClCompile Include="UndoDeleteSeletion.cpp" />
+    <ClCompile Include="UndoInsertScenery.cpp" />
+    <ClCompile Include="UndoMove.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2DMapEditor.rc" />

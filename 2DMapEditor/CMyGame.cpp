@@ -326,7 +326,8 @@ void CMyGame::drawTemMode()
 		string ext = GetExt( modepath );
 		if ( ext==".mo" ) {
 			string path = GetPath( modepath );
-			FILE* fp = fopen( modepath.c_str(), "r" );
+			FILE* fp;
+			fopen_s(&fp, modepath.c_str(), "r" );
 			if ( fp!=NULL ) {
 				fgets( buffer, 260, fp );
 				int len = strlen( buffer );

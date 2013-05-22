@@ -22,6 +22,10 @@ public:
 	virtual void positon_update( const CPoint& moveV ) { m_pos += moveV; m_bpos += moveV; };
 	virtual void frame_update(){};
 	virtual const CRect   GetRect( MapData & mapData);
+
+	long GetGUID() const {return m_guid;};
+	virtual void Move(const CPoint &moveV){m_pos += moveV;m_bpos += moveV;};
+
 protected:
 	LPDIRECT3DDEVICE9 m_lpd3ddev;
 	long			  m_guid;		

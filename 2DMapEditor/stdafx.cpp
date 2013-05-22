@@ -57,3 +57,9 @@ bool RectIntersect( const CRect& a, const CRect& b )
 	if ( o.IntersectRect( &a, &b ) ) return true;
 	else return false;
 }
+
+long CalcualteGUID()
+{
+	static int count = 1;
+	return ((rand()&0xffff)<<16)+(count++);
+}
