@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "2DMapEditor.h"
+#include "MapEditorController.h"
 
 #include "MainFrm.h"
 
@@ -23,6 +24,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_COMMAND(ID_EDIT_UNDO, &CMainFrame::OnEditUndo)
 	ON_COMMAND(ID_EDIT_REDO, &CMainFrame::OnEditRedo)
+	ON_COMMAND(ID_EDIT_DELETE, &CMainFrame::OnEditDelete)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -154,4 +156,11 @@ void CMainFrame::OnEditRedo()
 {
 	// TODO: 在此添加命令处理程序代码
 	MapEditorControllerSingleton::Instance().Redo();
+}
+
+
+void CMainFrame::OnEditDelete()
+{
+	// TODO: 在此添加命令处理程序代码
+	MapEditorControllerSingleton::Instance().DeleteSelection();
 }
