@@ -62,3 +62,13 @@ Operation * MapData::MoveMode(CPoint moveVec,bool isLastMove)
 	}
 	return oper;
 }
+
+void MapData::Serialize(CArchive& ar)
+{
+	if (ar.IsStoring())
+	{
+
+	}else{
+
+	}
+}

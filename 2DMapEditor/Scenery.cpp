@@ -80,3 +80,13 @@ const CRect Scenery::GetRect( MapData & mapData)
 	rect.SetRect(cp.x,cp.y,cp.x+m_ImageWidth,cp.y+m_ImageHeight);
 	return rect;
 }
+
+void Scenery::Serialize(CArchive& ar)
+{
+	if (ar.IsStoring())
+	{
+
+	}else{
+
+	}
+}

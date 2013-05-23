@@ -13,7 +13,9 @@ using namespace std;
 
 class MapData : public CObject
 {
+	DECLARE_SERIAL(MapData)
 public:
+	
 	MapData(const string& terrainName = "",size_t xLength = 64,size_t yLength = 64);
 	virtual ~MapData();
 
@@ -27,7 +29,7 @@ public:
 	size_t getWidth() { return m_xlength; };
 	size_t getHeight() { return m_yLength; };
 	void   SetOffest(CPoint offest,const CRect & rect );
-	
+	void	Serialize(CArchive& ar);
 	
 public:
 	Operation *ChangeTerrain(const string& terrainFilePath);

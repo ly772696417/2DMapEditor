@@ -2,8 +2,9 @@
 
 #include "header.h"
 class MapData;
-class Scenery
+class Scenery : public CObject
 {
+	DECLARE_SERIAL(Scenery);
 public:
 	// copy constructor
 	Scenery( const Scenery& scenery );
@@ -22,6 +23,8 @@ public:
 	virtual void positon_update( const CPoint& moveV ) { m_pos += moveV; m_bpos += moveV; };
 	virtual void frame_update(){};
 	virtual const CRect   GetRect( MapData & mapData);
+
+	void	Serialize(CArchive& ar);
 protected:
 	LPDIRECT3DDEVICE9 m_lpd3ddev;
 	long			  m_guid;		
