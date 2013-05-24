@@ -23,19 +23,24 @@ public:
 	void Data_Init();
 	void setTerrainFile();
 	void setSpriteFile(string filename);
-	void scrollScreen();
+//	void scrollScreen();
 	//游戏运行
 	void Game_Run(bool m_isMouseDown,CPoint curMouse,CPoint downMouse);
 	void drawMap();
 	void drawMicMap();
 	void drawMode(float scale);
 	void drawMicMode();
+	void drawTemMode();
+	void drawRect();
 	void moveMicMap();
 	void moveCameraTo(CPoint point);
 	//游戏结束
+	void setSelRect(bool state,CRect rect);
 	void Game_End();	
 private:
 	CRect m_winRect;
+	CRect m_selRect;
+	bool  m_bisSel;
 	//字体
 	LPD3DXFONT m_lpfont;
 public:

@@ -62,3 +62,4 @@ extern double g_dscrollx;
 extern double g_dscrolly;
 const string GetPath( const string& fileName );
 const string GetExt( const string& fileName );
+bool RectIntersect( const CRect& a, const CRect& b );

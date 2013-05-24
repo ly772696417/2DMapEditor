@@ -35,18 +35,37 @@ m_mofilename(moFile),m_lastTime(0),	m_frames(0),m_totalframe(0)
 	fclose( fp );
 }
 
-
+void MotionScenery::positon_update( const CPoint& moveV )
+{
+	for (size_t i=0;i<m_scenerys.size();i++)
+	{
+		m_scenerys[i].positon_update(moveV);
+	}
+}
 void MotionScenery::frame_update()
 {
 	DWORD t = GetTickCount();
 
 	// If time is up update time.
-	if ( t>m_lastTime+40 ) 
+	if ( t>m_lastTime+30 ) 
 	{
 		m_lastTime = t;
 		m_frames ++; 
 		m_frames %= m_totalframe;
 	}
+}
+
+void MotionScenery::Selete( bool state )
+{
+	for (size_t i=0;i<m_scenerys.size();i++)
+	{
+		m_scenerys[i].Selete(state);
+	}
+}
+
+const CRect MotionScenery::GetRect(MapData & mapData)
+{
+	return m_scenerys[0].GetRect(mapData);
 }
 
 

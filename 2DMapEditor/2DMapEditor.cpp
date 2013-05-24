@@ -10,6 +10,7 @@
 
 #include "2DMapEditorDoc.h"
 #include "2DMapEditorView.h"
+#include "MapEditorController.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -189,6 +190,6 @@ BOOL CMy2DMapEditorApp::OnIdle(LONG lCount)
 		if (rightView->scrollScreen())	;
 
 	}
-	
+
 	return CWinAppEx::OnIdle(lCount);
 }

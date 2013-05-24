@@ -1,8 +1,10 @@
 #pragma once
 
 #include "header.h"
-class Scenery
+class MapData;
+class Scenery : public CObject
 {
+	DECLARE_SERIAL(Scenery);
 public:
 	// copy constructor
 	Scenery( const Scenery& scenery );
@@ -15,16 +17,17 @@ public:
 	virtual LPDIRECT3DTEXTURE9 GetImage() { return m_lpImage; }
 	virtual const int GetWidth() { return m_ImageWidth; }
 	virtual const int GetHeight() { return m_ImageHeight; }
-	virtual const CPoint& GetPos() const { return m_pos; }
-
+	virtual const CPoint& GetPos() const { return m_pos; }	
 	virtual bool IsSeleted() const { return m_isSelect; };
 	virtual void Selete( bool state ) { m_isSelect = state; };
 	virtual void positon_update( const CPoint& moveV ) { m_pos += moveV; m_bpos += moveV; };
 	virtual void frame_update(){};
+	virtual const CRect   GetRect( MapData & mapData);
+
+	void	Serialize(CArchive& ar);
 protected:
 	LPDIRECT3DDEVICE9 m_lpd3ddev;
-	long			  m_guid;	
-	
+	long			  m_guid;		
 	CPoint			  m_pos, m_bpos;
 	bool			m_isSelect;
 	CString			m_fileName;

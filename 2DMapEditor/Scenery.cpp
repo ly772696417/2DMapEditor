@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Scenery.h"
-
+#include "MapData.h"
 
 Scenery::Scenery():m_lpImage(NULL),m_fileName("")
 {
@@ -22,7 +22,8 @@ Scenery::Scenery( const char* bmpName, const CPoint& pt ,LPDIRECT3DDEVICE9 d3dde
 m_pos(pt),m_isSelect(false),m_fileName(bmpName),m_lpd3ddev(d3ddev)
 {
 	m_lpImage=LoadTexture();
-	
+	m_pos.x-=m_ImageWidth/2;
+	m_pos.y-=m_ImageHeight/2;
 }
 
 Scenery::~Scenery(void)
@@ -32,8 +33,7 @@ Scenery::~Scenery(void)
 }
 
 const Scenery& 	Scenery::operator=( const Scenery& o )
-{
-	
+{	
 	m_pos=o.m_pos;
 	m_bpos=o.m_bpos;
 	m_fileName=o.m_fileName;
@@ -69,7 +69,24 @@ LPDIRECT3DTEXTURE9 Scenery::LoadTexture()
 		&info,                 //bitmap file info (from loaded file)
 		NULL,                  //color palette
 		&texture );            //destination texture
-//	m_pos.x-=info.Width/2;
-	
+
 	return texture;
+}
+
+const CRect Scenery::GetRect( MapData & mapData)
+{
+	CRect rect;
+	CPoint cp=m_pos-mapData.GetOffest();
+	rect.SetRect(cp.x,cp.y,cp.x+m_ImageWidth,cp.y+m_ImageHeight);
+	return rect;
+}
+
+void Scenery::Serialize(CArchive& ar)
+{
+	if (ar.IsStoring())
+	{
+
+	}else{
+
+	}
 }
