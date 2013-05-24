@@ -16,8 +16,9 @@ private:
 	LPDIRECT3DTEXTURE9 m_PlayerImage;
 	LPDIRECT3DTEXTURE9 m_RectImage;
 public:
-	//	bool bGameOver;
-	CMyDirectx myDirectx;
+	CMyGame();
+	~CMyGame();
+	
 	//初始化游戏
 	bool Game_Init(HWND window,CRect rect);	
 	void Data_Init();
@@ -44,6 +45,7 @@ private:
 	//字体
 	LPD3DXFONT m_lpfont;
 public:
+	CMyDirectx myDirectx;
 	CPoint m_curMousePos;
 	CPoint m_downMousePos;	
 	CPoint m_mapOffest;

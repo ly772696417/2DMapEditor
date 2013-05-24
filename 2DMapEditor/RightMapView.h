@@ -14,6 +14,7 @@ public:
 	CRect m_selRect;
 	bool m_isMouseDown;
 	bool  m_isSelcted;
+	bool  m_isInit;
 	CPoint m_curMousePos,m_downMousePos;
 	CPoint  m_ogrMovePos,m_moveVec;
 

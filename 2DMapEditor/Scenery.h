@@ -25,8 +25,11 @@ public:
 	virtual const CRect   GetRect( MapData & mapData);
 
 	void	Serialize(CArchive& ar);
-protected:
+	void    Release();
+public:
 	LPDIRECT3DDEVICE9 m_lpd3ddev;
+protected:
+	
 	long			  m_guid;		
 	CPoint			  m_pos, m_bpos;
 	bool			m_isSelect;

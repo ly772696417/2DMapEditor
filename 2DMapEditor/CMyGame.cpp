@@ -13,6 +13,17 @@ const int MapSizeHeight=960;
 const int MapSizeWidth=640;
 const int MicMapSize=256;
 
+CMyGame::CMyGame()
+{
+	background=NULL;
+	m_RectImage=NULL;
+}
+
+CMyGame::~CMyGame()
+{
+	Game_End();
+}
+
 bool  CMyGame::Game_Init(HWND window,CRect rect)
 {
 	CMyGame::myDirectx.Direct3D_Init(window,rect.Width(),rect.Height(),false);
@@ -50,10 +61,16 @@ void CMyGame::Data_Init()
 
 void CMyGame::Game_End()
 {
-	background->Release();
-	m_RectImage->Release();
-	myDirectx.DirectInput_Shutdown();
-	myDirectx.Direct3D_Shutdown();
+	if(background!=NULL)
+		background->Release();
+	if(m_RectImage!=NULL)
+		m_RectImage->Release();
+	if(myDirectx.d3ddev!=NULL)
+	{
+		myDirectx.DirectInput_Shutdown();
+		myDirectx.Direct3D_Shutdown();
+	}
+	
 
 }
 
@@ -77,7 +94,7 @@ void CMyGame::Game_Run(bool isMouseDown,CPoint curMouse,CPoint downMouse)
 	MapData * mapData=MapEditorControllerSingleton::Instance().GetMapData();
 	m_mapOffest=mapData->GetOffest();
 	myDirectx.d3ddev->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 
-		D3DCOLOR_XRGB(255,255,255), 1.0f, 0);	
+		D3DCOLOR_XRGB(255,0,255), 1.0f, 0);	
 	myDirectx.DirectInput_Update();
 
 	setTerrainFile();
@@ -86,7 +103,7 @@ void CMyGame::Game_Run(bool isMouseDown,CPoint curMouse,CPoint downMouse)
 	{   
 		myDirectx.spriteobj->Begin(D3DXSPRITE_ALPHABLEND);
 		drawMode(1);
-		drawMicMode();
+//		drawMicMode();
 		drawMicMap();
 		drawTemMode();
 		if (m_bisSel)
@@ -229,17 +246,17 @@ void CMyGame::drawMode(float scale)
 		CRect rect=(*it)->GetRect(*mapData);
 		if ( typeid(**it)==typeid(Scenery) )
 		{
+			
 			myDirectx.Sprite_Transform_Draw((*it)->GetImage(),(*it)->GetPos().x-m_mapOffest.x,
 				(*it)->GetPos().y-m_mapOffest.y,(*it)->GetWidth(),(*it)->GetHeight(),0,1,0.0,scale,scale);		
 			
-		}else
-		{
+		}else{
 			MotionScenery * ms=dynamic_cast<MotionScenery *>( (*it) );
 			(*it)->frame_update();
 			myDirectx.Sprite_Transform_Draw(ms->m_scenerys[ms->m_frames].GetImage(),
 				ms->m_scenerys[ms->m_frames].GetPos().x-m_mapOffest.x,ms->m_scenerys[ms->m_frames].GetPos().y-m_mapOffest.y,
 				ms->m_scenerys[ms->m_frames].GetWidth(),ms->m_scenerys[ms->m_frames].GetHeight(),0,1,0.0,scale,scale);
-
+				
 		}
 		if ((*it)->IsSeleted())
 		{				

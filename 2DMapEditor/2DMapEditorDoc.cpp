@@ -44,7 +44,8 @@ BOOL CMy2DMapEditorDoc::OnNewDocument()
 
 	// TODO: 在此添加重新初始化代码
 	// (SDI 文档将重用该文档)
-
+	CPoint cp;
+	MapEditorControllerSingleton::Instance().NewMap(cp);
 	return TRUE;
 }
 
@@ -55,14 +56,8 @@ BOOL CMy2DMapEditorDoc::OnNewDocument()
 
 void CMy2DMapEditorDoc::Serialize(CArchive& ar)
 {
-	if (ar.IsStoring())
-	{
-		// TODO: 在此添加存储代码
-	}
-	else
-	{
-		// TODO: 在此添加加载代码
-	}
+	
+	MapEditorControllerSingleton::Instance().Serialize(ar);
 }
 
 #ifdef SHARED_HANDLERS

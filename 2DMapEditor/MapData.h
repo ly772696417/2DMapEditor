@@ -30,7 +30,7 @@ public:
 	size_t getHeight() { return m_yLength; };
 	void   SetOffest(CPoint offest,const CRect & rect );
 	void	Serialize(CArchive& ar);
-	
+	void   Release();
 public:
 	Operation *ChangeTerrain(const string& terrainFilePath);
 	Operation *InsertScenery(const string& filePath,const CPoint& point);

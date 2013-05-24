@@ -11,8 +11,9 @@
 
 using namespace std;
 
-class MapEditorController
+class MapEditorController : public CObject
 {
+	DECLARE_SERIAL(MapEditorController)
 public:
 	MapEditorController(void);
 	~MapEditorController(void);
@@ -45,10 +46,13 @@ public:
 	bool CheackIsMove(CPoint pt);
 	void MoveMode(CPoint moveVec);
 	LPDIRECT3DDEVICE9 Getdevice();
+	void DataInit();
 
+	void	Serialize(CArchive& ar);
+	void   Release();
 public:
 	CMyGame *m_myGame;
-
+	bool  m_isGameInit;
 private:
 	MapData *m_pMapData;
 	
