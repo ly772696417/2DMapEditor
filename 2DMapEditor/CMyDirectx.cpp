@@ -4,6 +4,7 @@
 
 CMyDirectx::CMyDirectx()
 {
+	d3ddev=NULL;
 }
 
 CMyDirectx::~CMyDirectx()

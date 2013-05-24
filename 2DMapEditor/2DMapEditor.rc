@@ -252,7 +252,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "2DMapEditor\n\n2DMapEditor\n\n\nMy2DMapEditor.Document\n2DMapEditor.Document"
+    IDR_MAINFRAME           "2DMapEditor\n\n2DMapEditor\n2D Map(*.map)\n.map\nMy2DMapEditor.Document\n2DMapEditor.Document"
 END
 
 STRINGTABLE

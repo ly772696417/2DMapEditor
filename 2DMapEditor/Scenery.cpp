@@ -1,7 +1,13 @@
 #include "stdafx.h"
 #include "Scenery.h"
 #include "MapData.h"
+<<<<<<< HEAD
 
+=======
+#include "MapEditorController.h"
+
+IMPLEMENT_SERIAL(Scenery,CObject,1)
+>>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 Scenery::Scenery():m_lpImage(NULL),m_fileName("")
 {
 	
@@ -19,7 +25,7 @@ Scenery::Scenery( const Scenery& o ):
 }
 
 Scenery::Scenery( const char* bmpName, const CPoint& pt ,LPDIRECT3DDEVICE9 d3ddev):
-m_pos(pt),m_isSelect(false),m_fileName(bmpName),m_lpd3ddev(d3ddev)
+m_pos(pt),m_isSelect(false),m_fileName(bmpName),m_lpd3ddev(d3ddev),m_guid(0)
 {
 	m_lpImage=LoadTexture();
 	m_pos.x-=m_ImageWidth/2;
@@ -28,8 +34,7 @@ m_pos(pt),m_isSelect(false),m_fileName(bmpName),m_lpd3ddev(d3ddev)
 
 Scenery::~Scenery(void)
 {
-	m_lpd3ddev=NULL;
-	m_lpImage->Release();
+//	Release();
 }
 
 const Scenery& 	Scenery::operator=( const Scenery& o )
@@ -54,7 +59,7 @@ LPDIRECT3DTEXTURE9 Scenery::LoadTexture()
 	m_ImageWidth=info.Width;
 	m_ImageHeight=info.Height;
 	//create the new texture by loading a bitmap image file
-	D3DXCreateTextureFromFileEx( 
+	HRESULT res=D3DXCreateTextureFromFileEx( 
 		m_lpd3ddev,                //Direct3D device object
 		m_fileName.GetString(),      //bitmap filename
 		info.Width,            //bitmap image width
@@ -69,7 +74,11 @@ LPDIRECT3DTEXTURE9 Scenery::LoadTexture()
 		&info,                 //bitmap file info (from loaded file)
 		NULL,                  //color palette
 		&texture );            //destination texture
+<<<<<<< HEAD
 
+=======
+	m_lpImage=texture;
+>>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 	return texture;
 }
 
@@ -85,8 +94,28 @@ void Scenery::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
+<<<<<<< HEAD
 
 	}else{
 
 	}
 }
+=======
+		ar<<m_guid<<m_pos<<m_fileName<<m_isSelect;
+	}else{
+//		Release();
+		ar>>m_guid>>m_pos>>m_fileName>>m_isSelect;
+		m_lpd3ddev=MapEditorControllerSingleton::Instance().Getdevice();
+		
+	}
+}
+
+void Scenery::Release()
+{
+	
+	if(m_lpImage!=NULL)
+		m_lpImage->Release();
+	m_lpImage=NULL;
+	m_lpd3ddev=NULL;
+}
+>>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0

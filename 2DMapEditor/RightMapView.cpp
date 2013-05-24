@@ -19,6 +19,7 @@ IMPLEMENT_DYNCREATE(CRightMapView, CView)
 CRightMapView::CRightMapView()
 {
 	m_pSingleton = this;
+	m_isInit=false;
 }
 
 CRightMapView::~CRightMapView()
@@ -79,8 +80,9 @@ void CRightMapView::OnInitialUpdate()
 	m_curMousePos = CPoint(rect.Width() * 0.5,rect.Height() * 0.5);
 	m_downMousePos = CPoint(0,0);
 	SetCursorPos(rect.Width() * 0.5,rect.Height() * 0.5);
-	MapEditorControllerSingleton::Instance().m_myGame->Game_Init(this->GetSafeHwnd(),rect);
 	
+	MapEditorControllerSingleton::Instance().m_myGame->Game_Init(this->GetSafeHwnd(),rect);
+	MapEditorControllerSingleton::Instance().DataInit();
 	m_micMapRect=CRect(rect.left,rect.bottom-MicMapSize-4,rect.left+MicMapSize,rect.bottom-4);
 	this->SetTimer(1,40,NULL);
 }
@@ -104,7 +106,8 @@ void CRightMapView::OnTimer(UINT_PTR nIDEvent)
 		MapEditorControllerSingleton::Instance().m_myGame->m_isMouseLeave=false;
 		scrollScreen();
 	}
-	MapEditorControllerSingleton::Instance().m_myGame->Game_Run(m_isMouseDown,m_curMousePos,m_downMousePos);
+	
+		MapEditorControllerSingleton::Instance().m_myGame->Game_Run(m_isMouseDown,m_curMousePos,m_downMousePos);
 	
 	CView::OnTimer(nIDEvent);
 }
