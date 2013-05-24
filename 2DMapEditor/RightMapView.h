@@ -11,9 +11,11 @@ class CRightMapView : public CView
 
 public:
 	
-
+	CRect m_selRect;
 	bool m_isMouseDown;
+	bool  m_isSelcted;
 	CPoint m_curMousePos,m_downMousePos;
+	CPoint  m_ogrMovePos,m_moveVec;
 
 public:
 	static CRightMapView *Singleton() { return m_pSingleton;}
@@ -46,6 +48,7 @@ public:
 	CRect m_micMapRect;
 	bool  m_isMouseLeave;
 	bool  scrollScreen();
+	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
 };
 
 

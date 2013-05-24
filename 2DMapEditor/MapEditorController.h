@@ -29,7 +29,8 @@ public:
 
 	MapData * GetMapData(){return m_pMapData;};
 
-	const string& GetFilePath()const{ return m_editfilePath; };
+	const string& GetFilePath()const { return m_terrainFilePath; };
+	const string& GetModePath()const { return m_editfilePath; };
 
 	//EditorMode
 	typedef enum EditorMode{ ModeSelection,ModeBrush,ModeMove };
@@ -40,7 +41,9 @@ public:
 
 	//Operations
 	void InsertScenery(const CPoint& point);
-
+	void CheackIsSel(CRect rect);
+	bool CheackIsMove(CPoint pt);
+	void MoveMode(CPoint moveVec);
 	LPDIRECT3DDEVICE9 Getdevice();
 
 public:
