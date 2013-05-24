@@ -68,12 +68,6 @@ void MapData::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
-<<<<<<< HEAD
-
-	}else{
-
-	}
-=======
 		ar<<CString(m_terrainFilePath.c_str())<<m_xlength<<m_yLength<<m_offest;
 		ar<<m_sceneryList.size();
 		list<Scenery *>::iterator it;
@@ -116,5 +110,4 @@ void MapData::Release()
 		delete (*it);
 	}
 	m_sceneryList.clear();
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 }

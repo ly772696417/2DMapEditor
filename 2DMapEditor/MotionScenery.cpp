@@ -35,8 +35,7 @@ m_mofilename(moFile),m_lastTime(0),	m_frames(0),m_totalframe(0)
 	fclose( fp );
 }
 
-<<<<<<< HEAD
-=======
+
 void MotionScenery::LoadTexture(LPDIRECT3DDEVICE9 d3ddev)
 {
 	for (int i=0;i<m_scenerys.size();i++)
@@ -46,7 +45,7 @@ void MotionScenery::LoadTexture(LPDIRECT3DDEVICE9 d3ddev)
 	}
 }
 
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
+
 void MotionScenery::positon_update( const CPoint& moveV )
 {
 	for (size_t i=0;i<m_scenerys.size();i++)
@@ -80,8 +79,7 @@ const CRect MotionScenery::GetRect(MapData & mapData)
 	return m_scenerys[0].GetRect(mapData);
 }
 
-<<<<<<< HEAD
-=======
+
 void MotionScenery::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
@@ -107,5 +105,4 @@ void MotionScenery::Serialize(CArchive& ar)
 	}
 }
 
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 

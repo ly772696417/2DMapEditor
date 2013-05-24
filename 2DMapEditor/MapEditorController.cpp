@@ -129,8 +129,6 @@ bool MapEditorController::CheackIsMove(CPoint pt)
 void MapEditorController::MoveMode(CPoint moveVec)
 {
 	m_pMapData->MoveMode(moveVec,true);
-<<<<<<< HEAD
-=======
 }
 
 void MapEditorController::Serialize(CArchive& ar)
@@ -158,5 +156,4 @@ void MapEditorController::Release()
 	if(m_myGame!=NULL)
 		delete m_myGame;
 	m_myGame=NULL;
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 }

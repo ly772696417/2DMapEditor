@@ -1,13 +1,11 @@
 #include "stdafx.h"
 #include "Scenery.h"
 #include "MapData.h"
-<<<<<<< HEAD
 
-=======
 #include "MapEditorController.h"
 
 IMPLEMENT_SERIAL(Scenery,CObject,1)
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
+
 Scenery::Scenery():m_lpImage(NULL),m_fileName("")
 {
 	
@@ -74,11 +72,8 @@ LPDIRECT3DTEXTURE9 Scenery::LoadTexture()
 		&info,                 //bitmap file info (from loaded file)
 		NULL,                  //color palette
 		&texture );            //destination texture
-<<<<<<< HEAD
 
-=======
 	m_lpImage=texture;
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 	return texture;
 }
 
@@ -94,13 +89,6 @@ void Scenery::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
-<<<<<<< HEAD
-
-	}else{
-
-	}
-}
-=======
 		ar<<m_guid<<m_pos<<m_fileName<<m_isSelect;
 	}else{
 //		Release();
@@ -118,4 +106,3 @@ void Scenery::Release()
 	m_lpImage=NULL;
 	m_lpd3ddev=NULL;
 }
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0

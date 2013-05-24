@@ -250,22 +250,13 @@ void CMyGame::drawMode(float scale)
 			myDirectx.Sprite_Transform_Draw((*it)->GetImage(),(*it)->GetPos().x-m_mapOffest.x,
 				(*it)->GetPos().y-m_mapOffest.y,(*it)->GetWidth(),(*it)->GetHeight(),0,1,0.0,scale,scale);		
 			
-<<<<<<< HEAD
-		}else
-		{
-=======
 		}else{
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 			MotionScenery * ms=dynamic_cast<MotionScenery *>( (*it) );
 			(*it)->frame_update();
 			myDirectx.Sprite_Transform_Draw(ms->m_scenerys[ms->m_frames].GetImage(),
 				ms->m_scenerys[ms->m_frames].GetPos().x-m_mapOffest.x,ms->m_scenerys[ms->m_frames].GetPos().y-m_mapOffest.y,
 				ms->m_scenerys[ms->m_frames].GetWidth(),ms->m_scenerys[ms->m_frames].GetHeight(),0,1,0.0,scale,scale);
-<<<<<<< HEAD
 
-=======
-				
->>>>>>> 2fa49e79e8b8ac815a1ec394e72454683f0f69c0
 		}
 		if ((*it)->IsSeleted())
 		{				
